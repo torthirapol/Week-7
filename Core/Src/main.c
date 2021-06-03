@@ -464,6 +464,12 @@ void ControlPWM() {
 			PWMOut = K_P * ErrorValue + (K_I * SummaryError)
 					+ K_D * (ErrorValue - LastError);
 			LastError = ErrorValue;
+			if(PWMOut > 10000){
+				PWMOut = 10000;
+			}
+			if(PWMOut < -10000){
+				PWMOut = -10000;
+						}
 			return PWMOut;
 }
 //void RunMotor() {
